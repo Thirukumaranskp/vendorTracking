@@ -5,6 +5,7 @@ import { AlertController, IonList, LoadingController, ModalController, ToastCont
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
+import { Routes } from '../../Routes';
 
 @Component({
   selector: 'page-schedule',
@@ -34,10 +35,19 @@ export class SchedulePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.updateSchedule();
+
+        // check access.
+        this.user.hasAccess(Routes.Vendors).then(acces => {
+
+          if(acces)
+            this.updateSchedule();
+          else
+            this.router.navigateByUrl(Routes.Login);
+        });
   }
 
   updateSchedule() {
+
     // Close any open sliding items when the schedule updates
     if (this.scheduleList) {
       this.scheduleList.closeSlidingItems();

@@ -1,26 +1,43 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ActionSheetController } from '@ionic/angular';
 
 import { ConferenceData } from '../../providers/conference-data';
+import { UserData } from '../../providers/user-data';
+import { Routes } from '../../Routes';
 
 @Component({
   selector: 'page-speaker-list',
   templateUrl: 'speaker-list.html',
   styleUrls: ['./speaker-list.scss'],
 })
-export class SpeakerListPage {
+export class SpeakerListPage implements OnInit {
   speakers: any[] = [];
 
   constructor(
     public actionSheetCtrl: ActionSheetController,
     public confData: ConferenceData,
     public inAppBrowser: InAppBrowser,
-    public router: Router
+    public router: Router,
+    public user: UserData
   ) {}
 
+  ngOnInit() {
+        // check access.
+        this.user.hasAccess(Routes.Threads).then(acces => {
+
+          if(acces)
+            this.updateSpeakers();
+          else
+            this.router.navigateByUrl(Routes.Login);
+        });
+  }
+
   ionViewDidEnter() {
+  }
+
+  updateSpeakers() {
     this.confData.getSpeakers().subscribe((speakers: any[]) => {
       this.speakers = speakers;
     });

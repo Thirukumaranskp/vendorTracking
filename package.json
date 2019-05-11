@@ -10,12 +10,6 @@
     "test": "ng test --watch=false",
     "lint": "ng lint"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm run test"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ionic-team/ionic-conference-app.git"

@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Storage } from '@ionic/storage';
 
 import { UserData } from './providers/user-data';
+import { Routes } from './Routes';
 
 @Component({
   selector: 'app-root',
@@ -87,6 +88,10 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       this.loggedIn = loggedIn;
     }, 300);
+  }
+
+  authendicate() {
+    this.router.navigateByUrl(Routes.Login);
   }
 
   listenForLoginEvents() {

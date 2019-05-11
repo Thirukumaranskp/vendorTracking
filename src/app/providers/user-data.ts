@@ -74,4 +74,12 @@ export class UserData {
       return value;
     });
   }
+
+  hasAccess(path : string) {
+    return this.isLoggedIn().then(loggedin => { 
+      // todo : role based checks
+      let access = true;
+      return loggedin && access;
+    });
+  }
 }
