@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckTutorial } from './providers/check-tutorial.service';
+import { Authentication } from './providers/auth.service';
 
 const routes: Routes = [
   {
@@ -32,7 +33,13 @@ const routes: Routes = [
     path: 'tutorial',
     loadChildren: './pages/tutorial/tutorial.module#TutorialModule',
     canLoad: [CheckTutorial]
+  },
+  {
+    path: 'reviews', 
+    loadChildren: './pages/reviews/reviews.module#ReviewsPageModule',
+    canLoad: [Authentication]
   }
+
 ];
 
 @NgModule({

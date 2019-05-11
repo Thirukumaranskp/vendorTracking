@@ -1,0 +1,58 @@
+{
+    "Title" : "Visual Studio Code",
+    "Avator" : "http://localhost:8100/assets/img/vs2019.png",
+    "Website" : "https://code.visualstudio.com/",
+    "Description" : "Full-featured integrated development environment (IDE) for Android, iOS, Windows, web, and cloud.",
+    "Votes" : "250K",
+    "Downloads" : "330K",
+    "Vendor" : {
+        "Title" : "Microsoft",
+        "Avator" : "http://localhost:8100/assets/img/ms.png"
+    },
+
+    "Reviews" : [
+
+    {
+        "User" : "Buerger Gilburt",
+        "Avator": "assets/img/user.png",
+        "Review" : "A prime example of the resurgence and return to relevance of Microsoft. I've been using VS Code on and off for several months now and it just gets better and better with every update. At some point over the last month, VS Code has become my daily driver (I think the introduction of code folding and Atom's decision to completely and un-recoverably freeze on me were the final factors in my decision). It's fast, powerful and extensible. Looking forward to continued development now that the 1.0 release has happened on schedule.",
+        "Votes" : "150"
+    },
+    {
+        "User" : "Gilbertina Blayne",
+        "Avator": "assets/img/user.png",
+        "Review" : "A prime example of the resurgence and return to relevance of Microsoft. I've been using VS Code on and off for several months now and it just gets better and better with every update. At some point over the last month, VS Code has become my daily driver (I think the introduction of code folding and Atom's decision to completely and un-recoverably freeze on me were the final factors in my decision). It's fast, powerful and extensible. Looking forward to continued development now that the 1.0 release has happened on schedule.",
+        "Votes" : "150"
+    },
+    {
+        "User" : "Ginnifer Marquet",
+        "Avator": "assets/img/user.png",
+        "Review" : "A prime example of the resurgence and return to relevance of Microsoft. I've been using VS Code on and off for several months now and it just gets better and better with every update. At some point over the last month, VS Code has become my daily driver (I think the introduction of code folding and Atom's decision to completely and un-recoverably freeze on me were the final factors in my decision). It's fast, powerful and extensible. Looking forward to continued development now that the 1.0 release has happened on schedule.",
+        "Votes" : "150"
+    },
+    {
+        "User" : "Marozas Poulter",
+        "Avator": "assets/img/user.png",
+        "Review" : "A prime example of the resurgence and return to relevance of Microsoft. I've been using VS Code on and off for several months now and it just gets better and better with every update. At some point over the last month, VS Code has become my daily driver (I think the introduction of code folding and Atom's decision to completely and un-recoverably freeze on me were the final factors in my decision). It's fast, powerful and extensible. Looking forward to continued development now that the 1.0 release has happened on schedule.",
+        "Votes" : "150"
+    },
+    {
+        "User" : "John Abraham",
+        "Avator": "assets/img/user.png",
+        "Review" : "A prime example of the resurgence and return to relevance of Microsoft. I've been using VS Code on and off for several months now and it just gets better and better with every update. At some point over the last month, VS Code has become my daily driver (I think the introduction of code folding and Atom's decision to completely and un-recoverably freeze on me were the final factors in my decision). It's fast, powerful and extensible. Looking forward to continued development now that the 1.0 release has happened on schedule.",
+        "Votes" : "150"
+    },
+    {
+        "User" : "Pouncey Riccio",
+        "Avator": "assets/img/user.png",
+        "Review" : "A prime example of the resurgence and return to relevance of Microsoft. I've been using VS Code on and off for several months now and it just gets better and better with every update. At some point over the last month, VS Code has become my daily driver (I think the introduction of code folding and Atom's decision to completely and un-recoverably freeze on me were the final factors in my decision). It's fast, powerful and extensible. Looking forward to continued development now that the 1.0 release has happened on schedule.",
+        "Votes" : "150"
+    },
+    {
+        "User" : "Ricardo Skipton",
+        "Avator": "assets/img/user.png",
+        "Review" : "A prime example of the resurgence and return to relevance of Microsoft. I've been using VS Code on and off for several months now and it just gets better and better with every update. At some point over the last month, VS Code has become my daily driver (I think the introduction of code folding and Atom's decision to completely and un-recoverably freeze on me were the final factors in my decision). It's fast, powerful and extensible. Looking forward to continued development now that the 1.0 release has happened on schedule.",
+        "Votes" : "150"
+    }
+    ]
+}

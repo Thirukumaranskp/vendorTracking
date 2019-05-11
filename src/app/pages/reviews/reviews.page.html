@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>reviews</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+      <!-- Product - Card - Convert to - Component?  -->
+      <ion-card>
+
+        <!-- Vendor avator - product title -->
+          <ion-item>
+            <ion-avatar item-start>
+              <img [src]="vendor ? vendor.Avator : 'assets/img/ms.png' ">
+            </ion-avatar>
+            <h3>{{ vendor.Title }} - {{ product.Title }} </h3>
+          </ion-item>
+        
+          <!-- Product logo -->
+          <div style="background-color:black">
+              <img class="card-img" [src]="product ? product.Avator : 'assets/img/vs2019.png'" alt="ionic logo">
+          </div>
+        
+          <!-- Product Description Here.  -->
+          <ion-card-content>
+            <p>{{ product.Description }}</p>
+          </ion-card-content>
+
+          <!-- Company Details, Product Website, Meta Tags, Usage Details? -->
+          <ion-item>
+              <ion-icon name="logo-twitter" item-start></ion-icon>
+              <p>Followers</p>
+              <ion-badge item-end>{{ product.Downloads}}</ion-badge>
+          </ion-item>
+
+          <ion-item>
+              <ion-icon name="musical-notes" item-start></ion-icon>
+              <p>Likes</p>
+              <ion-badge item-end>{{ product.Votes }}</ion-badge>
+          </ion-item>
+        
+        </ion-card>
+
+
+        <!-- Reviews -->
+        <ion-list>
+
+          <!-- Review Card  -->
+          <ion-card *ngFor="let review of reviews" >
+
+            <!-- Reviewer avator - Name - Title -->
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="assets/img/user.png">
+              </ion-avatar>
+              <span>{{ review.User }}</span>
+            </ion-item>
+
+            <!-- Review Details Here.  -->
+            <ion-card-content>
+                <p> {{ review.Review }} </p>
+            </ion-card-content>
+
+            <ion-item>
+                <ion-icon name="musical-notes" item-start></ion-icon>
+                <p>Up Vote</p>
+                <ion-badge item-end>{{ review.Votes }} </ion-badge>
+            </ion-item>
+
+            </ion-card>
+
+        </ion-list>
+
+</ion-content>

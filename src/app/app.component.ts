@@ -29,6 +29,11 @@ export class AppComponent implements OnInit {
       title: 'Threads',
       url: '/app/tabs/speakers',
       icon: 'chatboxes'
+    },
+    {
+      title: 'Reviews',
+      url: 'reviews',
+      icon: 'chatboxes'
     }
   ];
   loggedIn = false;
