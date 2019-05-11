@@ -1,12 +1,12 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { of } from "rxjs";
+import { map } from "rxjs/operators";
 
-import { UserData } from './user-data';
+import { UserData } from "./user-data";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ConferenceData {
   data: any;
@@ -18,7 +18,7 @@ export class ConferenceData {
       return of(this.data);
     } else {
       return this.http
-        .get('assets/data/data.json')
+        .get("assets/data/data.json")
         .pipe(map(this.processData, this));
     }
   }
@@ -66,17 +66,17 @@ export class ConferenceData {
 
   getTimeline(
     dayIndex: number,
-    queryText = '',
+    queryText = "",
     excludeTracks: any[] = [],
-    segment = 'all'
+    segment = "all"
   ) {
     return this.load().pipe(
       map((data: any) => {
         const day = data.schedule[dayIndex];
         day.shownSessions = 0;
 
-        queryText = queryText.toLowerCase().replace(/,|\.|-/g, ' ');
-        const queryWords = queryText.split(' ').filter(w => !!w.trim().length);
+        queryText = queryText.toLowerCase().replace(/,|\.|-/g, " ");
+        const queryWords = queryText.split(" ").filter(w => !!w.trim().length);
 
         day.groups.forEach((group: any) => {
           group.hide = true;
@@ -129,7 +129,7 @@ export class ConferenceData {
     // if the segement is 'favorites', but session is not a user favorite
     // then this session does not pass the segment test
     let matchesSegment = false;
-    if (segment === 'favorites') {
+    if (segment === "favorites") {
       if (this.user.hasFavorite(session.name)) {
         matchesSegment = true;
       }
@@ -145,8 +145,8 @@ export class ConferenceData {
     return this.load().pipe(
       map((data: any) => {
         return data.speakers.sort((a: any, b: any) => {
-          const aName = a.name.split(' ').pop();
-          const bName = b.name.split(' ').pop();
+          const aName = a.name.split(" ").pop();
+          const bName = b.name.split(" ").pop();
           return aName.localeCompare(bName);
         });
       })
@@ -165,6 +165,77 @@ export class ConferenceData {
     return this.load().pipe(
       map((data: any) => {
         return data.map;
+      })
+    );
+  }
+
+  getVendors() {
+    return this.load().pipe(
+      map((data: any) => {
+        return data.vendors.sort((a: any, b: any) => {
+          const aName = a.name.split(" ").pop();
+          const bName = b.name.split(" ").pop();
+          return aName.localeCompare(bName);
+        });
+      })
+    );
+  }
+
+  getFilteredVendors(queryText = "", segment = "all") {
+    return this.load().pipe(
+      map((data: any) => {
+        const vendors = data.vendors;
+
+        queryText = queryText.toLowerCase().replace(/,|\.|-/g, " ");
+        const queryWords = queryText.split(" ").filter(w => !!w.trim().length);
+
+        if (queryWords.length) {
+          return vendors.filter(vendor => {
+            const vendorName = vendor.name.toLowerCase();
+            let matchFound = false;
+            for (const query of queryWords) {
+              if (vendorName.indexOf(query) > -1) {
+                matchFound = true;
+                break;
+              }
+            }
+            return matchFound;
+          });
+        }
+      })
+    );
+  }
+
+  getFilteredProducts(vendorId: string, queryText = "") {
+    return this.load().pipe(
+      map((data: any) => {
+        let filteredProducts = [];
+
+        if (data && data.products) {
+          for (const product of data.products) {
+            if (product && product.vendorId == vendorId) {
+              filteredProducts.push(product);
+            }
+          }
+        }
+        queryText = queryText.toLowerCase().replace(/,|\.|-/g, " ");
+        const queryWords = queryText.split(" ").filter(w => !!w.trim().length);
+
+        if (queryWords.length) {
+          return filteredProducts.filter(product => {
+            const displayName = product.displayName.toLowerCase();
+            let matchFound = false;
+            for (const query of queryWords) {
+              if (displayName.indexOf(query) > -1) {
+                matchFound = true;
+                break;
+              }
+            }
+            return matchFound;
+          });
+        }else {
+          return filteredProducts;
+        }
       })
     );
   }
