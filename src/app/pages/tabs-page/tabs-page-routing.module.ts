@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs-page';
 import { SchedulePage } from '../schedule/schedule';
+import { ProductsPage } from '../products/products';
 
 
 const routes: Routes = [
@@ -17,9 +18,9 @@ const routes: Routes = [
             component: SchedulePage,
           },
           {
-            path: 'session/:sessionId',
-            loadChildren: '../session-detail/session-detail.module#SessionDetailModule'
-          }
+            path: 'products/:vendorId',
+            loadChildren: '../products/products.module#ProductsModule'
+          },
         ]
       },
       {
@@ -39,25 +40,7 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: 'map',
-        children: [
-          {
-            path: '',
-            loadChildren: '../map/map.module#MapModule'
-          }
-        ]
-      },
-      {
-        path: 'about',
-        children: [
-          {
-            path: '',
-            loadChildren: '../about/about.module#AboutModule'
-          }
-        ]
-      },
-      {
+     {
         path: '',
         redirectTo: '/app/tabs/schedule',
         pathMatch: 'full'

@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      Selected vendor List
+    </ion-buttons>
+
+    <ion-segment [(ngModel)]="segment" (ionChange)="updateProducts()">
+      <ion-segment-button value="all">
+        All
+      </ion-segment-button>
+      <ion-segment-button value="favorites">
+        Favorites
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-buttons slot="end">
+      <ion-button >
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="queryText" (ionChange)="updateProducts()" placeholder="Search"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="outer-content">
+  <ion-list #productsList [hidden]="products?.length === 0">
+    <ion-grid fixed>
+      <ion-row class="ion-align-items-stretch">
+        <ion-col size="12" size-md="6" *ngFor="let product of products">
+          <ion-card class="speaker-card">
+            <ion-card-header>
+              <ion-item detail="false" lines="none" routerLink="/app/tabs/speakers/speaker-details/{{product.id}}">
+                <ion-avatar slot="start">
+                  <img [src]="product.productPic" alt="Product profile pic">
+                </ion-avatar>
+                  <h3>{{product.displayName}}</h3>
+              </ion-item>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-row class="ion-no-padding ion-justify-content-center">
+                <ion-col size="4" class="ion-text-left">
+                   <ion-label>Category : {{product.category}}</ion-label>
+                </ion-col>
+                <ion-col size="4" class="ion-text-center">
+                  <ion-label>Sub Category : {{product.category}}</ion-label>
+                </ion-col>
+                <ion-col size="4" lass="ion-text-right">
+                  <ion-label>Sub Category : {{product.subCategory}}</ion-label>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-no-padding ion-justify-content-center">
+                <ion-col size="4" class="ion-text-left">
+                   <ion-label>Manufacturer : {{product.Manufacturer}}</ion-label>
+                </ion-col>
+                <ion-col size="4" class="ion-text-center">
+                  <ion-label>Decision : {{product.standardDecision}}</ion-label>
+                </ion-col>
+                <ion-col size="4" lass="ion-text-right">
+                  <ion-label>dataSource : {{product.dataSource}}</ion-label>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-no-padding ion-justify-content-center">
+                <ion-col size="12" class="ion-text-left">
+                   <ion-label>Product Owner : {{product.categoryOwnerFirstName}} {{product.categoryOwnerLastName}}</ion-label>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  
+  <ion-list-header [hidden]="products?.length > 0">
+    No Products Found
+  </ion-list-header>
+</ion-content>
