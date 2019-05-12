@@ -9,10 +9,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding-start ion-padding-end ion-padding-top">
 
       <!-- Product - Card - Convert to - Component?  -->
-      <ion-card>
+      <ion-card class="ion-padding-start ion-padding-end">
 
         <!-- Vendor avator - product title -->
           <ion-item>
@@ -32,6 +32,20 @@
             <p>{{ product.Description }}</p>
           </ion-card-content>
 
+          <!-- Meta - Categories -->
+          
+          <ion-item>
+            <ion-chip>
+              <ion-label>Productivity</ion-label>
+            </ion-chip>
+            <ion-chip>
+              <ion-label>IDE</ion-label>
+            </ion-chip>
+            <ion-chip>
+              <ion-label>OSS</ion-label>
+            </ion-chip>
+          </ion-item>
+
           <!-- Company Details, Product Website, Meta Tags, Usage Details? -->
           <ion-item>
               <ion-icon name="logo-twitter" item-start></ion-icon>
@@ -45,11 +59,41 @@
               <ion-badge item-end>{{ product.Votes }}</ion-badge>
           </ion-item>
         
-        </ion-card>
-
+      </ion-card>    
 
         <!-- Reviews -->
-        <ion-list>
+        <ion-list class="ion-padding-start ion-padding-end">
+
+          <!-- Add Review Button -->
+          <ion-fab vertical="top" horizontal="end" slot="fixed" *ngIf="!addReview" size="large">
+            <ion-fab-button (click)='enableEdit()'>
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+
+          <ion-card *ngIf="addReview">
+
+            <!-- Reviewer avator - Name - Title -->
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="assets/img/user.png">
+              </ion-avatar>
+              <span>{{ username }}</span>
+            </ion-item>
+
+            <!-- Review Details Here.  -->
+            <ion-card-content>
+              <ion-item>
+                <ion-textarea placeholder="Enter more information here..."></ion-textarea>
+              </ion-item>              
+            </ion-card-content>
+
+            <ion-item>
+              <ion-button color="primary">Save</ion-button>
+              <ion-button color="secondary" (click)="disableEdit()" >Cancel</ion-button>
+            </ion-item>
+
+            </ion-card>
 
           <!-- Review Card  -->
           <ion-card *ngFor="let review of reviews" >

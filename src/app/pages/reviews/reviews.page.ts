@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReviewsService } from '../../providers/reviews.service';
 import { ActivatedRoute } from '@angular/router';
+import { UserData } from '../../providers/user-data';
 
 @Component({
   selector: 'reviews',
@@ -12,17 +13,38 @@ export class ReviewsPage implements OnInit {
   product : any;
   vendor : any;
   reviews : any[];
-  readonly defaultBack = "/app/tabs/schedule/products/";
   defaultRouting: string;
-  constructor(private reviewsService : ReviewsService,
-    private route: ActivatedRoute
+  addReview = false;
+  username : string = "";
+  readonly defaultBack = "/app/tabs/schedule/products/";
+
+  constructor(
+    private reviewsService : ReviewsService,
+    private route: ActivatedRoute,
+    private userData: UserData
     ) {
 
     this.ngOnInit = this.ngOnInit.bind(this);
   }
 
+  getUsername() {
+    this.userData.getUsername().then((username) => {
+      this.username = username;
+    });
+  }
+
+  enableEdit() {
+    this.addReview = true;
+  }
+
+  disableEdit() {
+    this.addReview = false;
+  }
+
   ngOnInit() {
     let self = this;
+
+    this.getUsername();
 
     this.reviewsService
     .getReviews("vscode")
