@@ -35,9 +35,16 @@ const routes: Routes = [
     canLoad: [CheckTutorial]
   },
   {
+    path: 'reviews/:id', 
+    loadChildren: './pages/reviews/reviews.module#ReviewsPageModule',
+    canLoad: [Authentication],
+    pathMatch: 'prefix'
+  },
+  {
     path: 'reviews', 
     loadChildren: './pages/reviews/reviews.module#ReviewsPageModule',
-    canLoad: [Authentication]
+    canLoad: [Authentication],
+    pathMatch: 'prefix'
   }
 
 ];
