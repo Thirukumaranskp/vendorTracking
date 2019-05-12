@@ -9,10 +9,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding-start ion-padding-end ion-padding-top">
+<ion-content class="root-content ion-padding-start ion-padding-end ion-padding-top">
 
       <!-- Product - Card - Convert to - Component?  -->
-      <ion-card class="ion-padding-start ion-padding-end">
+      <ion-card class="card-content ion-padding-start ion-padding-end">
 
         <!-- Vendor avator - product title -->
           <ion-item>
@@ -49,20 +49,20 @@
           <!-- Company Details, Product Website, Meta Tags, Usage Details? -->
           <ion-item>
               <ion-icon name="logo-twitter" item-start></ion-icon>
-              <p>Followers</p>
+              <p class="ion-padding-start ion-padding-end">Followers</p>
               <ion-badge item-end>{{ product.Downloads}}</ion-badge>
           </ion-item>
 
           <ion-item>
-              <ion-icon name="musical-notes" item-start></ion-icon>
-              <p>Likes</p>
-              <ion-badge item-end>{{ product.Votes }}</ion-badge>
+              <ion-icon name="happy" item-start></ion-icon>
+              <p class="ion-padding-start ion-padding-end">Likes</p>
+              <ion-badge>{{ product.Votes }}</ion-badge>
           </ion-item>
         
       </ion-card>    
 
         <!-- Reviews -->
-        <ion-list class="ion-padding-start ion-padding-end">
+        <ion-list>
 
           <!-- Add Review Button -->
           <ion-fab vertical="top" horizontal="end" slot="fixed" *ngIf="!addReview" size="large">
@@ -71,7 +71,7 @@
             </ion-fab-button>
           </ion-fab>
 
-          <ion-card *ngIf="addReview">
+          <ion-card class="card-content ion-padding-start ion-padding-end" *ngIf="addReview">
 
             <!-- Reviewer avator - Name - Title -->
             <ion-item>
@@ -96,14 +96,14 @@
             </ion-card>
 
           <!-- Review Card  -->
-          <ion-card *ngFor="let review of reviews" >
+          <ion-card class="card-content ion-padding-start ion-padding-end" *ngFor="let review of reviews" >
 
             <!-- Reviewer avator - Name - Title -->
             <ion-item>
               <ion-avatar item-start>
                 <img src="assets/img/user.png">
               </ion-avatar>
-              <span>{{ review.User }}</span>
+              <span class="ion-padding-start ion-padding-end">{{ review.User }}</span>
             </ion-item>
 
             <!-- Review Details Here.  -->
@@ -112,8 +112,8 @@
             </ion-card-content>
 
             <ion-item>
-                <ion-icon name="musical-notes" item-start></ion-icon>
-                <p>Up Vote</p>
+                <ion-icon name="happy" item-start></ion-icon>
+                <p class="ion-padding-start ion-padding-end">Up Vote</p>
                 <ion-badge item-end>{{ review.Votes }} </ion-badge>
             </ion-item>
 
