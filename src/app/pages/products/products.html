@@ -2,7 +2,8 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      Selected vendor List
+      <ion-back-button defaultHref="/app/tabs/schedule"></ion-back-button>
+       Vendor
     </ion-buttons>
 
     <ion-segment [(ngModel)]="segment" (ionChange)="updateProducts()">
@@ -32,7 +33,7 @@
         <ion-col size="12" size-md="6" *ngFor="let product of products">
           <ion-card class="speaker-card">
             <ion-card-header>
-              <ion-item detail="false" lines="none" routerLink="/app/tabs/speakers/speaker-details/{{product.id}}">
+              <ion-item detail="false" lines="none" routerLink="/reviews/{{product.id}}">
                 <ion-avatar slot="start">
                   <img [src]="product.productPic" alt="Product profile pic">
                 </ion-avatar>

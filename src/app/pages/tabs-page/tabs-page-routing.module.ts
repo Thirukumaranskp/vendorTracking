@@ -8,7 +8,6 @@ import { ProductsPage } from '../products/products';
 const routes: Routes = [
   {
     path: 'tabs',
-    component: TabsPage,
     children: [
       {
         path: 'schedule',
