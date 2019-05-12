@@ -17,3 +17,13 @@ $categories: (
     padding-left: 10px;
   }
 }
+
+.root-content {
+  --ion-background-color:: lightgrey !important;
+  background-color: lightgrey;
+}
+
+.card-content {
+  --ion-background-color:: white !important;
+  background-color: white;
+}

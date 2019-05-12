@@ -26,12 +26,12 @@
     <ion-searchbar [(ngModel)]="queryText" (ionChange)="updateProducts()" placeholder="Search"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
-<ion-content class="outer-content">
+<ion-content class="root-content outer-content">
   <ion-list #productsList [hidden]="products?.length === 0">
     <ion-grid fixed>
       <ion-row class="ion-align-items-stretch">
         <ion-col size="12" size-md="6" *ngFor="let product of products">
-          <ion-card class="speaker-card">
+          <ion-card class="card-content speaker-card">
             <ion-card-header>
               <ion-item detail="false" lines="none" routerLink="/reviews/{{product.id}}">
                 <ion-avatar slot="start">

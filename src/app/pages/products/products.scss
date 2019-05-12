@@ -11,6 +11,16 @@ $categories: (
   navigation: #6600cc
 );
 
+.root-content {
+  --ion-background-color:: lightgrey !important;
+  background-color: lightgrey;
+}
+
+.card-content {
+  --ion-background-color:: white !important;
+  background-color: white;
+}
+
 @each $track, $value in map-remove($categories) {
   ion-item-sliding[track='#{$track}'] ion-label {
     border-left: 2px solid $value;
